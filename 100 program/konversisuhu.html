@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Konversi Suhu</title>
+</head>
+<body>
+    <input type="number" id="celcius" placeholder="Masukkan suhu dalam Celcius">
+    <button onclick="konversi()">Konversi</button>
+    <p id="hasil"></p>
+
+    <script>
+        function konversi() {
+            let celcius = parseFloat(document.getElementById("celcius").value);
+            let fahrenheit = (celcius * 9/5) + 32;
+            document.getElementById("hasil").innerText = celcius + "°C = " + fahrenheit + "°F";
+        }
+    </script>
+</body>
+</html>
