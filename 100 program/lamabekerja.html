@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Lama Bekerja</title>
+</head>
+<body>
+    <h2>Program Lama Bekerja</h2>
+    <label for="jamMasuk">Jam Masuk (1-12):</label>
+    <input type="number" id="jamMasuk" min="1" max="12"><br><br>
+
+    <label for="jamKeluar">Jam Keluar (1-12):</label>
+    <input type="number" id="jamKeluar" min="1" max="12"><br><br>
+
+    <button onclick="hitungLamaKerja()">Hitung Lama Kerja</button>
+    <p id="hasil"></p>
+
+    <script>
+        function hitungLamaKerja() {
+            let jamMasuk = parseInt(document.getElementById("jamMasuk").value);
+            let jamKeluar = parseInt(document.getElementById("jamKeluar").value);
+            let lamaKerja = 0;
+
+            if (jamMasuk > jamKeluar) {
+                lamaKerja = (12 - jamMasuk) + jamKeluar;
+            } else {
+                lamaKerja = jamKeluar - jamMasuk;
+            }
+
+            document.getElementById("hasil").innerText = `Lama bekerja: ${lamaKerja} jam`;
+        }
+    </script>
+</body>
+</html>

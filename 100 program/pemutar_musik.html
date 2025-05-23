@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Pemutar Musik</title>
+</head>
+<body>
+    <h1>Pemutar Musik</h1>
+    <audio id="audioPlayer" src="music.mp3"></audio>
+    <button onclick="playMusic()">Play</button>
+    <button onclick="pauseMusic()">Pause</button>
+    <button onclick="stopMusic()">Stop</button>
+
+    <script>
+        function playMusic() {
+            document.getElementById("audioPlayer").play();
+        }
+        function pauseMusic() {
+            document.getElementById("audioPlayer").pause();
+        }
+        function stopMusic() {
+            const audio = document.getElementById("audioPlayer");
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    </script>
+</body>
+</html>
