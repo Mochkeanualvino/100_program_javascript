@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Menghitung Tahun Kabisat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f8ff;
+    }
+    h2 {
+      color: #2e8b57;
+    }
+    input, button {
+      margin: 8px 5px 8px 0;
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      background-color: #e0f7fa;
+      padding: 15px;
+      border-left: 4px solid #00796b;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📆 PROGRAM MENGHITUNG TAHUN KABISAT</h2>
+  <hr>
+
+  <label>Masukkan tahun awal:</label><br>
+  <input type="number" id="tahunInput"><br>
+
+  <button onclick="hitungKabisat()">Hitung Tahun Kabisat</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function isKabisat(tahun) {
+      return (tahun % 4 === 0 && tahun % 100 !== 0) || (tahun % 400 === 0);
+    }
+
+    function hitungKabisat() {
+      const tahunAwal = parseInt(document.getElementById("tahunInput").value);
+      const tahunSekarang = 2024;
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(tahunAwal) || tahunAwal > tahunSekarang) {
+        hasil.innerHTML = "❗ Masukkan tahun yang valid (kurang dari atau sama dengan 2024).";
+        return;
+      }
+
+      let jumlah = 0;
+      let daftar = [];
+
+      for (let tahun = tahunAwal; tahun <= tahunSekarang; tahun++) {
+        if (isKabisat(tahun)) {
+          jumlah++;
+          daftar.push(tahun);
+        }
+      }
+
+      hasil.innerHTML = `
+        ✅ Dari tahun <strong>${tahunAwal}</strong> hingga <strong>${tahunSekarang}</strong>, terdapat <strong>${jumlah}</strong> tahun kabisat.<br>
+        📅 Tahun kabisat: ${daftar.join(", ")}
+      `;
+    }
+  </script>
+
+</body>
+</html>

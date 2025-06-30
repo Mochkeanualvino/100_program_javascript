@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Eval</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0fff0;
+    }
+    h2 {
+      color: green;
+    }
+    input, button {
+      margin-top: 10px;
+      padding: 8px;
+      font-size: 16px;
+    }
+    #hasil {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    pre {
+      background-color: #e0ffe0;
+      padding: 10px;
+      border-left: 4px solid green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>PROGRAM MENGHITUNG MENGGUNAKAN EVAL</h2>
+  <hr style="border-color: green;">
+
+  <p>Contoh penggunaan:</p>
+  <pre>
+- 1 + 2
+- 5 - 2
+- 6 * 5
+- 9 / 3
+- 5 ** 2
+- 10 % 7
+  </pre>
+
+  <input type="text" id="inputEkspresi" placeholder="Masukkan ekspresi matematika">
+  <button onclick="hitung()">Hitung</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    function hitung() {
+      const ekspresi = document.getElementById("inputEkspresi").value;
+      const hasilElem = document.getElementById("hasil");
+
+      try {
+        const hasil = eval(ekspresi);
+        hasilElem.textContent = `Hasilnya adalah = ${hasil}`;
+      } catch (error) {
+        hasilElem.textContent = "Ekspresi tidak valid!";
+      }
+    }
+  </script>
+
+</body>
+</html>

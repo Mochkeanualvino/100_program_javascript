@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Menghitung Nilai dan Point</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0faff;
+    }
+    h2 {
+      color: #2e8b57;
+    }
+    input, button {
+      margin: 8px 5px 8px 0;
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      background-color: #e0f7fa;
+      padding: 15px;
+      border-left: 4px solid #00796b;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎓 PROGRAM MENGHITUNG POINT</h2>
+  <hr>
+
+  <label>Masukkan nilai UTS:</label><br>
+  <input type="number" id="uts"><br>
+
+  <label>Masukkan nilai Tugas:</label><br>
+  <input type="number" id="tugas"><br>
+
+  <label>Masukkan nilai UAS:</label><br>
+  <input type="number" id="uas"><br>
+
+  <button onclick="hitungNilai()">Hitung Nilai</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungNilai() {
+      const uts = parseFloat(document.getElementById("uts").value);
+      const tugas = parseFloat(document.getElementById("tugas").value);
+      const uas = parseFloat(document.getElementById("uas").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(uts) || isNaN(tugas) || isNaN(uas)) {
+        hasil.innerHTML = "❗ Masukkan semua nilai dengan benar.";
+        return;
+      }
+
+      const jumlah = uts + tugas + uas;
+      const rataRata = jumlah / 3;
+      let grade = "";
+
+      if (rataRata >= 85) {
+        grade = "A";
+      } else if (rataRata >= 70) {
+        grade = "B";
+      } else if (rataRata >= 60) {
+        grade = "C";
+      } else {
+        grade = "D";
+      }
+
+      hasil.innerHTML = `
+        📊 Rata-rata nilai Anda: <strong>${rataRata.toFixed(2)}</strong><br>
+        🏅 Nilai huruf: <strong>${grade}</strong>
+      `;
+    }
+  </script>
+
+</body>
+</html>

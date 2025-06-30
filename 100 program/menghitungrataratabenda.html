@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Menghitung Rata-rata Barang</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9fff0;
+    }
+    h2 {
+      color: #2e8b57;
+    }
+    input, button {
+      margin: 8px 5px 8px 0;
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      background-color: #f0ffe0;
+      padding: 15px;
+      border-left: 4px solid #2e8b57;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🛒 PROGRAM MENGHITUNG RATA-RATA BARANG</h2>
+  <hr>
+
+  <label>Masukkan harga barang 1:</label><br>
+  <input type="number" id="barang1" step="any"><br>
+
+  <label>Masukkan harga barang 2:</label><br>
+  <input type="number" id="barang2" step="any"><br>
+
+  <label>Masukkan harga barang 3:</label><br>
+  <input type="number" id="barang3" step="any"><br>
+
+  <button onclick="hitungPoin()">Hitung Poin</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungPoin() {
+      const b1 = parseFloat(document.getElementById("barang1").value);
+      const b2 = parseFloat(document.getElementById("barang2").value);
+      const b3 = parseFloat(document.getElementById("barang3").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(b1) || isNaN(b2) || isNaN(b3)) {
+        hasil.innerHTML = "❗ Masukkan semua harga barang dengan benar.";
+        return;
+      }
+
+      const total = b1 + b2 + b3;
+      const poin = total / 20000;
+
+      hasil.innerHTML = `
+        💰 Total harga: <strong>Rp ${total.toLocaleString()}</strong><br>
+        🎯 Anda berhasil mendapatkan poin: <strong>${poin.toFixed(2)}</strong>
+      `;
+    }
+  </script>
+
+</body>
+</html>

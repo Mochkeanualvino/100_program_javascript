@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Menghitung Waktu Proyek</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0fff0;
+    }
+    h2 {
+      color: #2e8b57;
+    }
+    input, button {
+      margin: 8px 5px 8px 0;
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      background-color: #e0ffe0;
+      padding: 15px;
+      border-left: 4px solid #2e8b57;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📅 PROGRAM MENGHITUNG WAKTU PROYEK</h2>
+  <hr>
+
+  <label>Masukkan total hari pengerjaan proyek:</label><br>
+  <input type="number" id="hariInput" step="any"><br>
+
+  <button onclick="hitungWaktu()">Hitung</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungWaktu() {
+      const hariInput = parseFloat(document.getElementById("hariInput").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(hariInput) || hariInput < 0) {
+        hasil.innerHTML = "❗ Masukkan jumlah hari yang valid.";
+        return;
+      }
+
+      const TAHUN = 365;
+      const BULAN = 30;
+      const HARI = 1;
+
+      let sisaHari = hariInput;
+      const tahun = Math.floor(sisaHari / TAHUN);
+      sisaHari %= TAHUN;
+
+      const bulan = Math.floor(sisaHari / BULAN);
+      sisaHari %= BULAN;
+
+      const hari = Math.floor(sisaHari / HARI);
+
+      hasil.innerHTML = `
+        🏗️ Waktu pengerjaan proyek ini adalah:<br>
+        📆 Tahun: <strong>${tahun}</strong><br>
+        📅 Bulan: <strong>${bulan}</strong><br>
+        📍 Hari: <strong>${hari}</strong>
+      `;
+    }
+  </script>
+
+</body>
+</html>

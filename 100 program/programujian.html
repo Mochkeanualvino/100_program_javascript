@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Program Ujian</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0fff0;
+    }
+    h2 {
+      color: #2e8b57;
+    }
+    .opsi {
+      margin: 10px 0;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #2e8b57;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📘 PROGRAM UJIAN</h2>
+  <hr style="border-color: #2e8b57;">
+
+  <p>Siapakah yang menjadi presiden indonesia saat ini?</p>
+
+  <div class="opsi">
+    <input type="radio" name="jawaban" value="a" id="a">
+    <label for="a">a. Prabowo subianto</label><br>
+
+    <input type="radio" name="jawaban" value="b" id="b">
+    <label for="b">b. Joko widodo</label><br>
+
+    <input type="radio" name="jawaban" value="c" id="c">
+    <label for="c">c. Kang Dedi Mulyadi</label>
+  </div>
+
+  <button onclick="cekJawaban()">Kirim Jawaban</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    function cekJawaban() {
+      const pilihan = document.querySelector('input[name="jawaban"]:checked');
+      const hasil = document.getElementById("hasil");
+
+      if (!pilihan) {
+        hasil.textContent = "Silakan pilih salah satu jawaban.";
+        return;
+      }
+
+      if (pilihan.value === "c") {
+        hasil.textContent = "✅ Jawaban Anda benar.";
+      } else {
+        hasil.textContent = "❌ Jawaban Anda salah.";
+      }
+    }
+  </script>
+
+</body>
+</html>

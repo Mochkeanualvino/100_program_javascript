@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Menghitung Tekanan Benda</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0fff0;
+    }
+    h2 {
+      color: #2e8b57;
+    }
+    input, button {
+      margin: 8px 5px 8px 0;
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      background-color: #e0ffe0;
+      padding: 15px;
+      border-left: 4px solid #2e8b57;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🧪 PROGRAM MENGHITUNG TEKANAN BENDA</h2>
+  <hr>
+
+  <label>Besaran gaya (N):</label><br>
+  <input type="number" id="gaya" step="any"><br>
+
+  <label>Luas permukaan (m²):</label><br>
+  <input type="number" id="luas" step="any"><br>
+
+  <button onclick="hitungTekanan()">Hitung Tekanan</button>
+  <button onclick="resetForm()">Reset</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungTekanan() {
+      const gaya = parseFloat(document.getElementById("gaya").value);
+      const luas = parseFloat(document.getElementById("luas").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(gaya) || isNaN(luas) || luas === 0) {
+        hasil.innerHTML = "❗ Masukkan nilai gaya dan luas yang valid (luas ≠ 0).";
+        return;
+      }
+
+      const tekanan = gaya / luas;
+      hasil.innerHTML = `
+        🔧 Tekanan benda ini adalah: <strong>${tekanan.toFixed(2)} Pascal (N/m²)</strong><br>
+        📐 Rumus: P = F / A = ${gaya} / ${luas}
+      `;
+    }
+
+    function resetForm() {
+      document.getElementById("gaya").value = "";
+      document.getElementById("luas").value = "";
+      document.getElementById("hasil").innerHTML = "";
+    }
+  </script>
+
+</body>
+</html>

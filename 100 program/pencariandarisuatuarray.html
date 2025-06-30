@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pencarian Array</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Pencarian dari Suatu Array</h2>
+  <p>Array: [3, 5, 7, 9, 11, 13, 15]</p>
+
+  <input type="number" id="targetInput" placeholder="Pilih (1-15)">
+  <button onclick="cariElemen()">Cari</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    const array = [3, 5, 7, 9, 11, 13, 15];
+
+    function cariElemen() {
+      const target = parseInt(document.getElementById("targetInput").value);
+      const hasil = document.getElementById("hasil");
+      let ditemukan = false;
+
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] === target) {
+          hasil.textContent = `Elemen ${target} ditemukan di index ${i}`;
+          ditemukan = true;
+          break;
+        }
+      }
+
+      if (!ditemukan) {
+        hasil.textContent = `Elemen ${target} tidak ditemukan`;
+      }
+    }
+  </script>
+
+</body>
+</html>

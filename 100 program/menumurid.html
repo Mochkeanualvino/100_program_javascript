@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Nama Murid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 5px 0;
+    }
+    input, button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📚 Daftar Nama Murid</h2>
+
+  <div>
+    <input type="text" id="namaInput" placeholder="Masukkan nama murid">
+    <button onclick="tambahNama()">Tambah</button>
+    <button onclick="cariNama()">Cari</button>
+  </div>
+
+  <ul id="daftarMurid"></ul>
+
+  <div>
+    <input type="number" id="editIndex" placeholder="Nomor murid">
+    <input type="text" id="editNama" placeholder="Nama baru">
+    <button onclick="editNama()">Edit</button>
+  </div>
+
+  <div>
+    <input type="number" id="hapusIndex" placeholder="Nomor murid">
+    <button onclick="hapusNama()">Hapus</button>
+  </div>
+
+  <script>
+    let murid = [];
+
+    function tampilkanDaftar() {
+      const daftar = document.getElementById("daftarMurid");
+      daftar.innerHTML = "";
+      if (murid.length === 0) {
+        daftar.innerHTML = "<li>Tidak ada data murid.</li>";
+      } else {
+        murid.forEach((nama, index) => {
+          const item = document.createElement("li");
+          item.textContent = `${index + 1}. ${nama}`;
+          daftar.appendChild(item);
+        });
+      }
+    }
+
+    function tambahNama() {
+      const input = document.getElementById("namaInput");
+      const nama = input.value.trim();
+      if (nama === "") return alert("Nama tidak boleh kosong.");
+      if (murid.includes(nama)) {
+        alert("Nama sudah ada, coba masukkan nama lain.");
+      } else {
+        murid.push(nama);
+        alert(`Nama ${nama} telah ditambahkan.`);
+        input.value = "";
+        tampilkanDaftar();
+      }
+    }
+
+    function editNama() {
+      const index = parseInt(document.getElementById("editIndex").value) - 1;
+      const namaBaru = document.getElementById("editNama").value.trim();
+      if (isNaN(index) || index < 0 || index >= murid.length) {
+        return alert("Nomor tidak valid.");
+      }
+      if (namaBaru === "") return alert("Nama baru tidak boleh kosong.");
+      murid[index] = namaBaru;
+      alert("Nama murid berhasil diedit.");
+      tampilkanDaftar();
+    }
+
+    function hapusNama() {
+      const index = parseInt(document.getElementById("hapusIndex").value) - 1;
+      if (isNaN(index) || index < 0 || index >= murid.length) {
+        return alert("Nomor tidak valid.");
+      }
+      const nama = murid.splice(index, 1);
+      alert(`Nama ${nama} berhasil dihapus.`);
+      tampilkanDaftar();
+    }
+
+    function cariNama() {
+      const nama = document.getElementById("namaInput").value.trim();
+      if (murid.includes(nama)) {
+        alert(`Nama ${nama} ditemukan.`);
+      } else {
+        alert("Nama tidak ditemukan.");
+      }
+    }
+
+    // Tampilkan daftar awal
+    tampilkanDaftar();
+  </script>
+
+</body>
+</html>

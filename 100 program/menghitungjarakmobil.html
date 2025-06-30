@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Menghitung Jarak Mobil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f8ff;
+    }
+    h2 {
+      color: #003366;
+    }
+    input, button {
+      margin: 8px 5px 8px 0;
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      background-color: #e0f0ff;
+      padding: 15px;
+      border-left: 4px solid #003366;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🚗 PROGRAM MENGHITUNG JARAK MOBIL</h2>
+  <hr>
+
+  <label>Masukkan kecepatan mobil (km/jam):</label><br>
+  <input type="number" id="kecepatan" step="any"><br>
+
+  <label>Masukkan waktu tempuh (jam):</label><br>
+  <input type="number" id="waktu" step="any"><br>
+
+  <button onclick="hitungJarak()">Hitung Jarak</button>
+  <button onclick="resetForm()">Reset</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungJarak() {
+      const kecepatan = parseFloat(document.getElementById("kecepatan").value);
+      const waktu = parseFloat(document.getElementById("waktu").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(kecepatan) || isNaN(waktu) || kecepatan < 0 || waktu < 0) {
+        hasil.innerHTML = "❗ Masukkan nilai kecepatan dan waktu yang valid.";
+        return;
+      }
+
+      const jarak = kecepatan * waktu;
+      hasil.innerHTML = `
+        📏 Jarak tempuh mobil adalah: <strong>${jarak.toFixed(2)} km</strong><br>
+        📐 Rumus: Jarak = Kecepatan × Waktu = ${kecepatan} × ${waktu}
+      `;
+    }
+
+    function resetForm() {
+      document.getElementById("kecepatan").value = "";
+      document.getElementById("waktu").value = "";
+      document.getElementById("hasil").innerHTML = "";
+    }
+  </script>
+
+</body>
+</html>

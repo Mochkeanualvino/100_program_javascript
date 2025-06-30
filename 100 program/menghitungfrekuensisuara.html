@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Menghitung Frekuensi Suara</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0fff0;
+    }
+    h2 {
+      color: #2e8b57;
+    }
+    input, button {
+      margin: 8px 5px;
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      background-color: #e0ffe0;
+      padding: 15px;
+      border-left: 4px solid #2e8b57;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎵 PROGRAM MENGHITUNG FREKUENSI SUARA</h2>
+  <hr>
+
+  <label>Masukkan jumlah getaran benda:</label><br>
+  <input type="number" id="getaran" step="any"><br>
+
+  <label>Masukkan waktu getaran (detik):</label><br>
+  <input type="number" id="waktu" step="any"><br>
+
+  <button onclick="hitungFrekuensi()">Hitung Frekuensi</button>
+  <button onclick="resetForm()">Reset</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungFrekuensi() {
+      const getaran = parseFloat(document.getElementById("getaran").value);
+      const waktu = parseFloat(document.getElementById("waktu").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(getaran) || isNaN(waktu) || waktu === 0) {
+        hasil.innerHTML = "❗ Masukkan nilai getaran dan waktu yang valid (waktu ≠ 0).";
+        return;
+      }
+
+      const frekuensi = getaran / waktu;
+      hasil.innerHTML = `
+        🔊 Frekuensi benda ini adalah: <strong>${frekuensi.toFixed(2)} Hz</strong><br>
+        📐 Rumus: f = n / t = ${getaran} / ${waktu}
+      `;
+    }
+
+    function resetForm() {
+      document.getElementById("getaran").value = "";
+      document.getElementById("waktu").value = "";
+      document.getElementById("hasil").innerHTML = "";
+    }
+  </script>
+
+</body>
+</html>

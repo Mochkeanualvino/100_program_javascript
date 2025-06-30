@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pertukaran Nilai</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 8px;
+      font-size: 16px;
+    }
+    #hasil {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔄 Pertukaran Nilai</h2>
+
+  <label>Nilai a:</label><br>
+  <input type="number" id="nilaiA"><br>
+
+  <label>Nilai b:</label><br>
+  <input type="number" id="nilaiB"><br>
+
+  <button onclick="tukarNilai()">Tukar Nilai</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    function tukarNilai() {
+      let a = parseInt(document.getElementById("nilaiA").value);
+      let b = parseInt(document.getElementById("nilaiB").value);
+
+      const sebelum = `Sebelum pertukaran: a = ${a}, b = ${b}`;
+      [a, b] = [b, a];
+      const sesudah = `Setelah pertukaran: a = ${a}, b = ${b}`;
+
+      document.getElementById("hasil").innerHTML = `${sebelum}<br>${sesudah}`;
+    }
+  </script>
+
+</body>
+</html>

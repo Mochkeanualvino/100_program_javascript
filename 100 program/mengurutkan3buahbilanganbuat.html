@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Urutkan Bilangan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9ff;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    input, button {
+      margin: 8px 0;
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      background-color: #eef;
+      padding: 15px;
+      border-left: 4px solid #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔢 Mengurutkan 3 Buah Bilangan Bulat</h2>
+
+  <label>Bilangan 1:</label><br>
+  <input type="number" id="bil1"><br>
+
+  <label>Bilangan 2:</label><br>
+  <input type="number" id="bil2"><br>
+
+  <label>Bilangan 3:</label><br>
+  <input type="number" id="bil3"><br>
+
+  <button onclick="urutkan()">Urutkan</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function urutkan() {
+      const a = parseInt(document.getElementById("bil1").value);
+      const b = parseInt(document.getElementById("bil2").value);
+      const c = parseInt(document.getElementById("bil3").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        hasil.innerHTML = "❗ Mohon masukkan ketiga bilangan dengan benar.";
+        return;
+      }
+
+      const bilangan = [a, b, c];
+      bilangan.sort((x, y) => x - y);
+
+      hasil.innerHTML = `✅ Bilangan terurut: <strong>${bilangan.join(", ")}</strong>`;
+    }
+  </script>
+
+</body>
+</html>

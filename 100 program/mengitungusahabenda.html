@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Menghitung Usaha Benda</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0fff0;
+    }
+    h2 {
+      color: #2e8b57;
+    }
+    input, button {
+      margin: 8px 0;
+      padding: 8px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    #hasil {
+      margin-top: 20px;
+      background-color: #e0ffe0;
+      padding: 15px;
+      border-left: 4px solid #2e8b57;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>⚙️ PROGRAM MENGHITUNG USAHA BENDA</h2>
+  <hr>
+
+  <label>Besaran gaya (N):</label><br>
+  <input type="number" id="gaya" step="any"><br>
+
+  <label>Perpindahan (m):</label><br>
+  <input type="number" id="perpindahan" step="any"><br>
+
+  <label>Sudut terhadap arah gaya (derajat):</label><br>
+  <input type="number" id="sudut" step="any"><br>
+
+  <button onclick="hitungUsaha()">Hitung Usaha</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    function hitungUsaha() {
+      const gaya = parseFloat(document.getElementById("gaya").value);
+      const perpindahan = parseFloat(document.getElementById("perpindahan").value);
+      const sudut = parseFloat(document.getElementById("sudut").value);
+      const hasil = document.getElementById("hasil");
+
+      if (isNaN(gaya) || isNaN(perpindahan) || isNaN(sudut)) {
+        hasil.innerHTML = "❗ Masukkan semua nilai dengan benar.";
+        return;
+      }
+
+      const sudutRadian = sudut * (Math.PI / 180);
+      const usaha = gaya * perpindahan * Math.cos(sudutRadian);
+
+      hasil.innerHTML = `🔧 Usaha benda ini adalah: <strong>${usaha.toFixed(2)} Joule</strong>`;
+    }
+  </script>
+
+</body>
+</html>

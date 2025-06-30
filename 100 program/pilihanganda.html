@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kuis Persib Bandung</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #e6f2ff;
+    }
+    h2 {
+      color: #003366;
+    }
+    .opsi {
+      margin: 10px 0;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>SIAPA KIPER PEMAIN PERSIB BANDUNG SEKARANG?</h2>
+
+  <div class="opsi">
+    <input type="radio" name="jawaban" value="A" id="a">
+    <label for="a">A. Messi</label><br>
+
+    <input type="radio" name="jawaban" value="B" id="b">
+    <label for="b">B. LeBron James</label><br>
+
+    <input type="radio" name="jawaban" value="C" id="c">
+    <label for="c">C. Ronaldo</label><br>
+
+    <input type="radio" name="jawaban" value="D" id="d">
+    <label for="d">D. Kevin Mendoza</label>
+  </div>
+
+  <button onclick="cekJawaban()">Kirim Jawaban</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    function cekJawaban() {
+      const pilihan = document.querySelector('input[name="jawaban"]:checked');
+      const hasil = document.getElementById("hasil");
+
+      if (!pilihan) {
+        hasil.textContent = "Silakan pilih salah satu jawaban.";
+        return;
+      }
+
+      if (pilihan.value === "D") {
+        hasil.textContent = "✅ Benar!";
+      } else {
+        hasil.textContent = "❌ Salah, jawabannya adalah D. Kevin Mendoza.";
+      }
+    }
+  </script>
+
+</body>
+</html>

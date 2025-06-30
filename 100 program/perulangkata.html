@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Perulangan Kalimat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f0ff;
+    }
+    h2 {
+      color: #800080;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 8px;
+      font-size: 16px;
+    }
+    #output {
+      margin-top: 20px;
+      background-color: #f0e6ff;
+      padding: 15px;
+      border-left: 4px solid #800080;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔁 PROGRAM PERULANGAN KALIMAT</h2>
+  <hr style="border-color: #800080;">
+
+  <label>Masukkan jumlah perulangan:</label><br>
+  <input type="number" id="jumlah"><br>
+
+  <label>Masukkan kalimat yang ingin diulang:</label><br>
+  <input type="text" id="kalimat"><br>
+
+  <button onclick="ulangKalimat()">Tampilkan</button>
+
+  <div id="output"></div>
+
+  <script>
+    function ulangKalimat() {
+      const jumlah = parseInt(document.getElementById("jumlah").value);
+      const kalimat = document.getElementById("kalimat").value;
+      const output = document.getElementById("output");
+
+      if (isNaN(jumlah) || jumlah <= 0 || kalimat.trim() === "") {
+        output.innerHTML = "Mohon masukkan jumlah dan kalimat yang valid.";
+        return;
+      }
+
+      let hasil = "";
+      for (let i = 0; i < jumlah; i++) {
+        hasil += `${i + 1}. ${kalimat}.<br>`;
+      }
+
+      output.innerHTML = hasil;
+    }
+  </script>
+
+</body>
+</html>
